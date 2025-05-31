@@ -1,0 +1,33 @@
+/**app.wxss**/
+page {
+    --primary-color: #07c160;
+    --text-color: #333333;
+    --text-color-light: #666666;
+    --background-color: #f6f6f6;
+    --border-color: #eeeeee;
+    
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+      Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+      sans-serif;
+  }
+  
+  .button-hover {
+    opacity: 0.9;
+  }
+  
+  button {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    border-radius: 8rpx;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+    color: #000000;
+    background-color: #F8F8F8;
+  }

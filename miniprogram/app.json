@@ -1,0 +1,14 @@
+{
+    "pages": [
+      "pages/index/index",
+      "pages/todo/todo"
+    ],
+    "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "我的日程规划",
+      "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+  }

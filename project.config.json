@@ -1,0 +1,62 @@
+{
+    "description": "项目配置文件",
+    "packOptions": {
+      "ignore": []
+    },
+    "miniprogramRoot": "miniprogram/",
+    "compileType": "miniprogram",
+    "projectname": "MyDailyPlanner",
+    "setting": {
+      "urlCheck": true,
+      "es6": true,
+      "enhance": true,
+      "postcss": true,
+      "preloadBackgroundData": false,
+      "minified": true,
+      "newFeature": false,
+      "coverView": true,
+      "nodeModules": false,
+      "autoAudits": false,
+      "showShadowRootInWxmlPanel": true,
+      "scopeDataCheck": false,
+      "uglifyFileName": false,
+      "checkInvalidKey": true,
+      "checkSiteMap": true,
+      "uploadWithSourceMap": true,
+      "compileHotReLoad": false,
+      "useMultiFrameRuntime": true,
+      "useApiHook": true,
+      "useApiHostProcess": true
+    },
+    "appid": "wx54a4bd485f1f71b2",
+    "libVersion": "2.20.1",
+    "debugOptions": {
+      "hidedInDevtools": []
+    },
+    "scripts": {},
+    "staticServerOptions": {
+      "baseURL": "",
+      "servePath": ""
+    },
+    "isGameTourist": false,
+    "condition": {
+      "search": {
+        "list": []
+      },
+      "conversation": {
+        "list": []
+      },
+      "game": {
+        "list": []
+      },
+      "plugin": {
+        "list": []
+      },
+      "gamePlugin": {
+        "list": []
+      },
+      "miniprogram": {
+        "list": []
+      }
+    }
+  } 

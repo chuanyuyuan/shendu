@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="input-section">
+    <input 
+      class="todo-input" 
+      placeholder="输入待办事项..." 
+      value="{{newTodo}}"
+      bindinput="onInput"
+      bindconfirm="addTodo"
+    />
+    <button class="btn btn-primary" bindtap="addTodo">添加</button>
+  </view>
+
+  <view class="tabs">
+    <view 
+      class="tab {{activeTab === 'all' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="all"
+    >全部</view>
+    <view 
+      class="tab {{activeTab === 'active' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="active"
+    >进行中</view>
+    <view 
+      class="tab {{activeTab === 'completed' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="completed"
+    >已完成</view>
+  </view>
+
+  <scroll-view class="todo-list" scroll-y>
+    <view class="list-group">
+      <block wx:for="{{filteredTodos}}" wx:key="id">
+        <view class="todo-item {{item.completed ? 'completed' : ''}}">
+          <view class="todo-content" bindtap="viewTaskDetail" data-id="{{item.id}}">
+            <icon 
+              type="{{item.completed ? 'success' : 'circle'}}" 
+              size="20"
+              catchtap="toggleTaskCompletion"
+              data-id="{{item.id}}"
+            />
+            <text>{{item.content}}</text>
+          </view>
+          <view class="delete-btn" bindtap="deleteTodo" data-id="{{item.id}}">
+            <icon type="clear" size="20"/>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view class="empty-state" wx:if="{{filteredTodos.length === 0}}">
+    <text>{{activeTab === 'all' ? '还没有待办事项，开始添加吧！' : activeTab === 'active' ? '没有进行中的待办事项' : '没有已完成的待办事项'}}</text>
+  </view>
+
+  <!-- 任务详情弹窗 -->
+  <view class="popup-mask" wx:if="{{showTaskDetail}}" bindtap="closeTaskDetail">
+    <view class="popup-content" catchtap="stopPropagation">
+      <view class="popup-header">
+        <text class="popup-title">编辑任务</text>
+        <icon type="clear" size="20" class="popup-close" bindtap="closeTaskDetail"/>
+      </view>
+      <view class="popup-body">
+        <view class="form-item">
+          <text class="form-label">任务内容</text>
+          <input 
+            class="form-input"
+            value="{{currentTask.content}}"
+            bindinput="onTaskContentInput"
+            placeholder="请输入任务内容"
+          />
+        </view>
+        <view class="form-item">
+          <text class="form-label">任务状态</text>
+          <text class="status-text {{currentTask.completed ? 'completed' : ''}}">
+            {{currentTask.completed ? '已完成' : '进行中'}}
+          </text>
+        </view>
+      </view>
+      <view class="popup-footer">
+        <button class="btn btn-default" bindtap="closeTaskDetail">取消</button>
+        <button class="btn btn-primary" bindtap="saveTaskDetail">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

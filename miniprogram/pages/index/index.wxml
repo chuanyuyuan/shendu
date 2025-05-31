@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="header">
+    <text class="title">我的日程规划</text>
+    <text class="subtitle">记录生活，规划未来</text>
+  </view>
+
+  <view class="card" bindtap="navigateToTodo">
+    <view class="card-content">
+      <view class="card-title">
+        <text class="icon">📝</text>
+        <text>待办事项</text>
+      </view>
+      <view class="card-stats">
+        <view class="stat-item">
+          <text class="stat-value">{{activeCount}}</text>
+          <text class="stat-label">进行中</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-value">{{completedCount}}</text>
+          <text class="stat-label">已完成</text>
+        </view>
+      </view>
+    </view>
+    <view class="card-arrow">
+      <text class="arrow">→</text>
+    </view>
+  </view>
+
+  <view class="coming-soon">
+    <view class="feature-card disabled">
+      <view class="feature-icon">💪</view>
+      <view class="feature-title">健身计划</view>
+      <view class="feature-status">即将推出</view>
+    </view>
+    
+    <view class="feature-card disabled">
+      <view class="feature-icon">📊</view>
+      <view class="feature-title">工作统计</view>
+      <view class="feature-status">即将推出</view>
+    </view>
+    
+    <view class="feature-card disabled">
+      <view class="feature-icon">📔</view>
+      <view class="feature-title">生活随笔</view>
+      <view class="feature-status">即将推出</view>
+    </view>
+  </view>
+</view>

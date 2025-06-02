@@ -5,6 +5,8 @@ const { generateUUID } = require('../utils/uuid');
 class TodoManager {
   constructor() {
     this.todos = [];
+    this.MAX_TODOS = 50; // 最大待办事项数量
+    this.MAX_SUBTASKS = 50; // 最大子任务数量
     this.loadTodos();
   }
 
@@ -31,6 +33,15 @@ class TodoManager {
 
   // 添加新的待办事项
   addTodo(content) {
+    if (this.todos.length >= this.MAX_TODOS) {
+      wx.showToast({
+        title: `最多只能创建${this.MAX_TODOS}个待办事项`,
+        icon: 'none',
+        duration: 2000
+      });
+      return null;
+    }
+
     const todo = new Todo({
       id: generateUUID(),
       content,
@@ -46,6 +57,15 @@ class TodoManager {
   addSubtask(todoId, content) {
     const todo = this.todos.find(t => t.id === todoId);
     if (!todo) return null;
+
+    if (todo.subtasks.length >= this.MAX_SUBTASKS) {
+      wx.showToast({
+        title: `每个任务最多只能添加${this.MAX_SUBTASKS}个子任务`,
+        icon: 'none',
+        duration: 2000
+      });
+      return null;
+    }
 
     const subtask = new SubTask({
       id: generateUUID(),

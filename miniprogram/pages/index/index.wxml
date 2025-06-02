@@ -1,7 +1,7 @@
 <view class="container">
   <view class="header">
-    <text class="title">我的日程规划</text>
-    <text class="subtitle">记录生活，规划未来</text>
+    <text class="title">慎独-我的日程规划</text>
+    <text class="subtitle">莫见乎隐，莫显乎微，故君子慎其独也</text>
   </view>
 
   <view class="card" bindtap="navigateToTodo">

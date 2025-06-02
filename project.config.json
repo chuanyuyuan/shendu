@@ -5,7 +5,7 @@
     },
     "miniprogramRoot": "miniprogram/",
     "compileType": "miniprogram",
-    "projectname": "MyDailyPlanner",
+    "projectname": "慎独-我的日程规划",
     "setting": {
       "urlCheck": true,
       "es6": true,
@@ -24,12 +24,25 @@
       "checkSiteMap": true,
       "uploadWithSourceMap": true,
       "compileHotReLoad": false,
+      "lazyloadPlaceholderEnable": false,
       "useMultiFrameRuntime": true,
       "useApiHook": true,
-      "useApiHostProcess": true
+      "useApiHostProcess": true,
+      "babelSetting": {
+        "ignore": [],
+        "disablePlugins": [],
+        "outputPath": ""
+      },
+      "enableEngineNative": false,
+      "useIsolateContext": true,
+      "userConfirmedBundleSwitch": false,
+      "packNpmManually": false,
+      "packNpmRelationList": [],
+      "minifyWXSS": true,
+      "showES6CompileOption": false
     },
     "appid": "wx54a4bd485f1f71b2",
-    "libVersion": "2.20.1",
+    "libVersion": "2.30.2",
     "debugOptions": {
       "hidedInDevtools": []
     },
@@ -39,24 +52,5 @@
       "servePath": ""
     },
     "isGameTourist": false,
-    "condition": {
-      "search": {
-        "list": []
-      },
-      "conversation": {
-        "list": []
-      },
-      "game": {
-        "list": []
-      },
-      "plugin": {
-        "list": []
-      },
-      "gamePlugin": {
-        "list": []
-      },
-      "miniprogram": {
-        "list": []
-      }
-    }
+    "condition": {}
   } 

@@ -34,8 +34,16 @@ Page({
   
     // 输入新待办事项
     onInput(e) {
+      const value = e.detail.value;
+      if (value.length >= 150) {
+        wx.showToast({
+          title: '最多输入150个字符',
+          icon: 'none',
+          duration: 2000
+        });
+      }
       this.setData({
-        newTodo: e.detail.value
+        newTodo: value
       });
     },
   
@@ -136,8 +144,16 @@ Page({
 
     // 监听任务内容输入
     onTaskContentInput(e) {
+      const value = e.detail.value;
+      if (value.length >= 150) {
+        wx.showToast({
+          title: '最多输入150个字符',
+          icon: 'none',
+          duration: 2000
+        });
+      }
       this.setData({
-        'currentTask.content': e.detail.value
+        'currentTask.content': value
       });
     },
 
@@ -191,8 +207,16 @@ Page({
 
     // 监听新子任务输入
     onNewSubtaskInput(e) {
+      const value = e.detail.value;
+      if (value.length >= 150) {
+        wx.showToast({
+          title: '最多输入150个字符',
+          icon: 'none',
+          duration: 2000
+        });
+      }
       this.setData({
-        newSubtaskContent: e.detail.value
+        newSubtaskContent: value
       });
     },
 
@@ -222,7 +246,14 @@ Page({
     // 监听子任务内容输入
     onSubtaskInput(e) {
       const { id } = e.currentTarget.dataset;
-      const { value } = e.detail;
+      const value = e.detail.value;
+      if (value.length >= 150) {
+        wx.showToast({
+          title: '最多输入150个字符',
+          icon: 'none',
+          duration: 2000
+        });
+      }
       const subtasks = this.data.currentTask.subtasks.map(subtask => 
         subtask.id === id ? { ...subtask, content: value } : subtask
       );

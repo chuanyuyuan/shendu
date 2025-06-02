@@ -6,6 +6,7 @@
       value="{{newTodo}}"
       bindinput="onInput"
       bindconfirm="addTodo"
+      maxlength="150"
     />
     <button class="btn btn-primary" bindtap="addTodo">添加</button>
   </view>
@@ -69,6 +70,7 @@
             value="{{currentTask.content}}"
             bindinput="onTaskContentInput"
             placeholder="请输入任务内容"
+            maxlength="150"
           />
         </view>
         <view class="subtasks-section">
@@ -98,6 +100,7 @@
                   bindinput="onSubtaskInput"
                   bindblur="saveSubtask"
                   data-id="{{item.id}}"
+                  maxlength="150"
                 />
                 <icon 
                   type="clear" 
@@ -116,6 +119,7 @@
                 focus="true"
                 bindinput="onNewSubtaskInput"
                 bindblur="saveNewSubtask"
+                maxlength="150"
               />
               <icon 
                 type="clear" 

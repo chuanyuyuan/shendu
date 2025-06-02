@@ -399,12 +399,31 @@
 
   .subtasks-list {
     max-height: 500rpx;
-    overflow: hidden;
+    overflow-y: auto;
     transition: max-height 0.3s ease;
+    background: #f9f9f9;
+    border-radius: 6rpx;
+    padding: 8rpx;
   }
 
   .subtasks-list.collapsed {
     max-height: 0;
+    padding: 0;
+  }
+
+  /* 自定义滚动条样式 */
+  .subtasks-list::-webkit-scrollbar {
+    width: 6rpx;
+    background-color: transparent;
+  }
+
+  .subtasks-list::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 3rpx;
+  }
+
+  .subtasks-list::-webkit-scrollbar-track {
+    background-color: transparent;
   }
 
   .btn-add-subtask {

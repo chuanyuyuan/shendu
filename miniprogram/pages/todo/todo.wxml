@@ -40,6 +40,7 @@
               data-id="{{item.id}}"
             />
             <text>{{item.content}}</text>
+            <text class="subtask-status" wx:if="{{item.subtaskCount > 0}}">{{item.subtaskStatus}}</text>
           </view>
           <view class="delete-btn" bindtap="deleteTodo" data-id="{{item.id}}">
             <icon type="clear" size="20"/>
@@ -70,11 +71,63 @@
             placeholder="请输入任务内容"
           />
         </view>
-        <view class="form-item">
-          <text class="form-label">任务状态</text>
-          <text class="status-text {{currentTask.completed ? 'completed' : ''}}">
-            {{currentTask.completed ? '已完成' : '进行中'}}
-          </text>
+        <view class="subtasks-section">
+          <view class="subtasks-header">
+            <view class="subtasks-title" bindtap="toggleSubtasksExpanded">
+              <text>子任务<text class="expand-icon {{isSubtasksExpanded ? 'expanded' : ''}}">▼</text></text>
+            </view>
+            <text class="subtask-status">{{subtaskStatus}}</text>
+            <view class="btn-add-subtask" bindtap="addNewSubtask">
+              <text class="icon-add">+</text>
+              <text>添加子任务</text>
+            </view>
+          </view>
+          <view class="subtasks-list {{isSubtasksExpanded ? '' : 'collapsed'}}" wx:if="{{currentTask.subtasks.length > 0 || isAddingSubtask}}">
+            <block wx:for="{{currentTask.subtasks}}" wx:key="id">
+              <view class="subtask-item">
+                <icon 
+                  type="{{item.completed ? 'success' : 'circle'}}" 
+                  size="18"
+                  catchtap="toggleSubtaskCompletion"
+                  data-id="{{item.id}}"
+                />
+                <input 
+                  class="subtask-input {{item.completed ? 'completed' : ''}}"
+                  value="{{item.content}}"
+                  placeholder="请输入子任务内容"
+                  bindinput="onSubtaskInput"
+                  bindblur="saveSubtask"
+                  data-id="{{item.id}}"
+                />
+                <icon 
+                  type="clear" 
+                  size="18"
+                  catchtap="deleteSubtask"
+                  data-id="{{item.id}}"
+                />
+              </view>
+            </block>
+            <view class="subtask-item" wx:if="{{isAddingSubtask}}">
+              <icon type="circle" size="18"/>
+              <input 
+                class="subtask-input"
+                value="{{newSubtaskContent}}"
+                placeholder="请输入子任务内容"
+                focus="true"
+                bindinput="onNewSubtaskInput"
+                bindblur="saveNewSubtask"
+              />
+              <icon 
+                type="clear" 
+                size="18"
+                catchtap="cancelAddSubtask"
+              />
+            </view>
+          </view>
+        </view>
+        <view class="status-line">
+          <text>任务状态：</text>
+          <text class="status-text {{currentTask.completed ? 'completed' : ''}}">{{currentTask.completed ? '已完成' : '进行中'}}</text>
         </view>
       </view>
       <view class="popup-footer">

@@ -79,10 +79,6 @@ class TodoManager {
     const todo = this.todos.find(t => t.id === todoId);
     if (todo) {
       todo.completed = completed;
-      // 如果待办事项标记为完成，所有子任务也标记为完成
-      if (completed) {
-        todo.subtasks.forEach(subtask => subtask.completed = true);
-      }
       this.saveTodos();
     }
   }
@@ -92,10 +88,6 @@ class TodoManager {
     const todo = this.todos.find(t => t.id === todoId);
     if (todo) {
       todo.updateSubtaskStatus(subtaskId, completed);
-      // 如果所有子任务都完成，将待办事项也标记为完成
-      if (todo.areAllSubtasksCompleted()) {
-        todo.completed = true;
-      }
       this.saveTodos();
     }
   }
@@ -134,6 +126,28 @@ class TodoManager {
   // 获取已完成的待办事项
   getCompletedTodos() {
     return this.todos.filter(todo => todo.completed);
+  }
+
+  // 获取指定任务的子任务总数
+  getSubtaskCount(todoId) {
+    const todo = this.todos.find(t => t.id === todoId);
+    return todo ? todo.subtasks.length : 0;
+  }
+
+  // 获取指定任务的已完成子任务数
+  getCompletedSubtaskCount(todoId) {
+    const todo = this.todos.find(t => t.id === todoId);
+    return todo ? todo.subtasks.filter(subtask => subtask.completed).length : 0;
+  }
+
+  // 获取指定任务的子任务完成状态
+  getSubtaskStatus(todoId) {
+    const todo = this.todos.find(t => t.id === todoId);
+    if (!todo) return '0/0';
+    
+    const total = todo.subtasks.length;
+    const completed = todo.subtasks.filter(subtask => subtask.completed).length;
+    return `${completed}/${total}`;
   }
 }
 

@@ -9,8 +9,11 @@ Page({
     },
   
     updateCounts() {
-      const app = getApp()
-      const todos = app.globalData.todos
+      const todosData = wx.getStorageSync('todos') || [];
+      const todos = todosData.map(todo => ({
+        ...todo,
+        subtasks: todo.subtasks || []
+      }));
       
       this.setData({
         activeCount: todos.filter(todo => !todo.completed).length,
